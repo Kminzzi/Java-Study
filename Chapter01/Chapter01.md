@@ -48,7 +48,57 @@
  - 가상 컴퓨터는 실제 컴퓨터(하드웨어)가 아닌 소프트웨어로 구현된 컴퓨터라는 뜻으로 컴퓨터 속의 컴퓨터라고 생각하면 됨.
  - 자바로 작성된 애플리케이션은 모두 이 가상 컴퓨터(JVM)에서만 실행되기 때문에 자바 애플리케이션이 실행되기 위해서는 반드시 JVM이 필요.
 
-![image](https://user-images.githubusercontent.com/68285922/206890455-07c4e9e4-497b-4861-8539-851e00b32336.png)   
+ - Java 애플리케이션은 JVM을 한 번 더 거치고, 실행 시에 해석(interpret)되기 때문에 속도가 느리다는 단점 존재.
+ - 하지만, 바이트코드(컴파일된 자바코드)를 하드웨어의 기계어로 바로 변환해주는 JIT 컴파일러와 향상된 최적화 기술이 적용되어 속도의 격차 감소.
+ - Write once, run anywhere. (한 번 작성하면 어디서든 실행된다)
+
+##  2. 자바개발환경 구축하기
+
+### 2.1 자바 개발도구(JDK) 설치하기
+
+#### - JDK(Java Develpment Kit)를 설치치하면, 자바가상머신과 자바클래스 라이브러리외에 자바를 개발하는데 필요한 프로그램들이 설치된다.
+
+	- javac.exe - 자바 컴파일러, 자바소스코드를 바이트코드로 컴파일
+	- java.exe - 자바 인터프리터, 컴파일러가 생선항 바이트코드를 해석하고 실행
+	- javap.exe - 역 어셈블러, 컴파일된 클래스파일을 원래의 소스로 변환
+	- javadoc.exe - 자동문서생성기, 소스파일에 있는 주석을 이용하여 Java API 문서와 같은 형식의 문서를 자동으로 생성
+	- jar.exe - 압축 프로그램, 클래스파일과 프로그램의 실행에 관련된 파일을 하나의 jar파일(.jar)로 압축하거나 압축 해제
+
+### 2.2 Java API 문서 설치하기
+#### http://java.sun.com/ 에서 다운
+Java API 문서가 C:\jdk1.8 에 설치되었다고 할 때, 'C:\jdk1.8\docs\api\index.html'에서 확인할 수 있다.
+
+
+##  3. 자바로 프로그램 작성하기
+
+### 3.1 Hello.java
+[예제1-1]
+```
+Class Hello {
+	public static void main(String[] args) {
+		System.out.println("Hello, world.");
+	}
+}
+```
    
-[그림 1-1] Java 애플리케이션과 일반 애플리케이션의 비교
+   [실행결과]
+```
+Hello, world.
+```
+메모장(notepad.exe)이나 에딧플러스(editplus)와 같은 편집기에 코드를 작성한 후, 'Hello.java'로 저장한다.
+
+cmd창에 다음과 같이 입력한다.
+
+```
+javac Hello.java
+```
+자바 컴파일러(javac)를 사용하여 소스파일(Hello.java)로부터 클래스파일(Hello.class)을 생성한다.
+```
+java Hello
+```
+자바 인터프리터(java.exe)로 실행한다.
+
+**Hello.java 작성** --(javac.exe)--> **Hello.class 생성** --(java.exe)--> **실행**
+
+
 
