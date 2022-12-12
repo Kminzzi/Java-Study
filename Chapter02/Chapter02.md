@@ -1,8 +1,9 @@
 
 
-# Chapter02. 변수
 
-###   :memo: 작성 날짜 : 2022-12-11
+# Chapter02. 변수 1~2
+
+###   :memo: 작성 날짜 : 2022-12-11~12
 ###  :tada: 작성자 : KMinzzi   
 
 <br/>
@@ -153,3 +154,80 @@ double d= 3.14f;		//float 보다 double 타입이 더 범위가 넓다.
 #### 문자 리터럴과 문자열 리터럴
 - 문자 리터럴 : 작은 따옴표로 문자 하나를 감싼 것
 - 문자열 리터럴 : 두 문자 이상을 큰 따옴표로 감싼 것
+
+```
+System.out.println("" + 7 + 7);
+```
+덧셈 연산자는 왼쪽에서 오른쪽으로 연산을 수행하기 때문에 빈 문자열("")을 더해주면 7이 문자열로 변환하여 실행 결과는 **77**이 나온다.
+
+
+</br>
+
+### 2.3 형식화된 출력 - print()
+
+printf()는 **'지시자(specifier)'** 를 통해 변수의 값을 여러 가지 형식으로 변환하여 출력하는 기능을 가지고 있다.
+
+|지시자|설명|
+|---|---|---|
+|%b|불리언(boolean)|
+|%d|10진수(decimal integer)|
+|%o|8진수(octal integer)|
+|%x, %X|16진수(hexadecimal integer)|
+|%f|10진수(decimal float)|
+|%e, %E|지수형태표현(exponent)|
+|%c|문자(character)|
+|%s|문자열(string)|
+
+</br>
+
+```
+System.out.printf("finger=[%5d]%n", finger);		//finger=[     10]
+System.out.printf("finger=[%-5d]%n", finger);		//finger=[10     ]
+System.out.printf("finger=[%05d]%n", finger);		//finger=[00010]
+```
+
+</br>
+
+```
+System.out.printf("hex=%x%n", hex);				//hex=ffffffffffffffff
+System.out.printf("hex=%#x%n", hex);			//hex=0xffffffffffffffff
+System.out.printf("hex=%#X%n", hex);			//hex=0xFFFFFFFFFFFFFFFF
+```
+
+</br>
+
+```
+System.out.printf("binNum=%s%n", Integer.toBinaryString(binNum));
+```
+정수를 2진 문자열로 변환해주는 'Integer.toBinaryString(int i)'를 사용한다. 문자열로 반환하므로 지시자 '%s'를 사용한다.
+
+```
+System.out.printf("c=%c, %d %n", c, (int)c);
+```
+int 타입으로 형변환 해야만 %d로 출력할 수 있다.
+
+<br/>
+
+### 2.4 화면에서 입력받기 - Scanner
+
+1. Scanner 입력받기
+```
+import java.util.*;
+```
+
+2. Scanner 객체 생성
+```
+Scanner scanner = new Scanner(System.in);
+```
+3-1. 문자열 반환
+```
+String input = scanner.nextLine();	// 입력받은 내용을 input에 저장
+int num = Integer.parseInt(input);	// 입력받은 내용을 int 타입의 값으로 변환
+```
+##### nextLine() 메서드를 호출하면, 입력대기 상태에 있다가 입력을 마치고 '엔터키(Enter)'를 누르면 입력한 내용이 문자열로 반환된다.
+
+ 3-2. 문자열 반환
+ ```
+ int num = scanner.nextInt();
+ ```
+##### 변환없이 숫자로 바로 입력받을 수 있지만 연속적으로 값을 입력받아서 사용하기에 까다롭다.
