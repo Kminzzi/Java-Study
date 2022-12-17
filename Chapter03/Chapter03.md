@@ -1,5 +1,6 @@
 
 
+
 # Chapter03. 연산자 (operator)
 
 ###   :memo: 작성 날짜 : 2022-12-14
@@ -151,7 +152,7 @@ j=i++;  	//후위형 	---->  j=i;			// 참조하여 대입 후에
 사칙 연산자는 덧셈(+), 뺄셈(-), 곱셈(*), 나눗셈(/)이 있다.
 곱셈, 나눗셈, 나머지 연산자가 덧셈, 뺄셈 연산자보다 우선순위가 높으므로 먼저 처리된다.
 
-#### 예제
+#### 예제 1
 ```
 class OperatorEx5 {
 	public static void main(String args[]) {
@@ -176,3 +177,110 @@ class OperatorEx5 {
 10 / 4.000000 = 2.500000
 ```
 a와 b를 나눈 결과가 2인 것은 연산 결과가 int 타입이기 때문에 소수점 이하는 버려지기 때문이다.
+
+</br>
+
+#### 예제 2
+```
+class OperatorEx10 {
+	public static void main(String args[]) {
+		char a='a';
+		char d='d';
+		
+		char zero='0'
+		char two='2';
+
+		System.out.printf("'%c'-'%c'=%d%d", d, a, d-a);
+		System.out.printf("'%c'-'%c'=%d%d", two, zero, two-zero);
+		System.out.printf("'%c'=%d%n", a, (int)a);
+		System.out.printf("'%c'=%d%n", d, (int)d);
+		System.out.printf("'%c'=%d%n", zero, (int)zero);
+		System.out.printf("'%c'=%d%n", two, (int)two);
+	}
+}
+```
+
+#### 실행결과
+```
+'d'-'a'=3
+'2'-'0'=2
+'a'=97
+'d'=100
+'0'=48
+'2'=50
+```
+
+문자는 해당 문자의 유니코드로 바뀌어 저장되므로 문자간의 사칙연산은 정수간의 연산과 동일하다.
+문자 '2'의 유니코드는 50이고, 문자 '0'은 48이므로 두 문자간의 뺄셈은 2를 결과로 얻는다.
+
+</br>
+
+#### 예제 3
+```
+class OperatorEx13 {
+	public static void main(String[] args) {
+		char c1='a';
+	
+//		char c2=c1+1;		//컴파일 에러 발생
+		char c2='a'+1;
+
+		System.out.println(c2);
+	}
+}
+```
+
+#### 실행결과
+```
+b
+```
+수식에 변수가 들어가 있는 경우에는 컴파일러가 미리 계산을 할 수 없기 때문에 형변환을 해주어야 한다.
+```
+char c2=(char)(c1+1);
+```
+
+</br>
+
+### 3.2 나머지 연산자 %
+- 나머지 연산자 : 왼쪽의 피연산자를 오른쪽 피연산자로 나누고 난 나머지 값을 결과로 반환하는 연산자
+
+**피연산자로 정수만 허용한다.**
+
+```
+public class OperatorEx20 {
+	public  static  void main(String[] args) {
+		System.out.println(-10%8);
+		System.out.println(10%-8);
+		System.out.println(-10%-8);
+	}
+}
+```
+#### 실행결과
+```
+-2
+2
+-2
+```
+나머지 연산자는 나누는 수로 음수도 허용한다. 다만 부호는 무시되므로 결과는 음수의 절대값으로 나눈 나머지와 같다.
+
+</br>
+
+## 4. 비교 연산자
+### 4.1 대소비교 연산자 < > <= >=
+**두 피연산자의 값의 크기를 비교하는 연산자**
+기본형 중에서는 boolean형을 제외한 나머지 자료형에 다 사용할 수 있지만 참조형에는 사용할 수 없다.
+|비교연산자|연산결과|
+|:-:|:-:|
+|>|좌변 값이 크면, true 아니면 flase|
+|<|좌변 값이 작으면, true 아니면 flase|
+|>=|좌변 값이 크거나 같으면, true 아니면 flase|
+|<=|좌변 값이 작거나 같으면, true 아니면 flase|
+
+</br>
+
+### 4.2 등가비교 연산자 == !=
+**두 피연산자의 값이 같은지 또는 다른지를 비교하는 연산자**
+기본형, 참조형, 즉 모든 자료형 사용가능하다.
+|비교연산자|연산결과|
+|:-:|:-:|
+|==|두 값이 같으면 true, 아니면 false|
+|!=| 값이 다르면 true, 아니면 false|
